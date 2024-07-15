@@ -1,0 +1,36 @@
+.edit-transaction {
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-transaction form div {
+  margin-bottom: 15px;
+}
+
+.edit-transaction form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.edit-transaction form input, .edit-transaction form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-transaction form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-transaction form button:hover {
+  background-color: #357ab9;
+}

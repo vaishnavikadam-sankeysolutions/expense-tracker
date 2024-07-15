@@ -1,0 +1,38 @@
+.delete-transaction {
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.delete-transaction ul {
+  list-style: none;
+  padding: 0;
+}
+
+.delete-transaction li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.delete-transaction li span {
+  flex: 1;
+  text-align: center;
+}
+
+.delete-transaction button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-transaction button:hover {
+  background-color: #c0392b;
+}
