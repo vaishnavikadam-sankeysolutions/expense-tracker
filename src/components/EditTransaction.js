@@ -32,6 +32,13 @@ const EditTransaction = ({ transaction, updateTransaction }) => {
       payee,
     };
     updateTransaction(updatedTransaction);
+
+    setType("expense");
+    setCategory("Select category");
+    setAmount("");
+    setDate("");
+    setNote("");
+    setPayee("");
   };
 
   return (
@@ -51,6 +58,7 @@ const EditTransaction = ({ transaction, updateTransaction }) => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
+            <option value="">Select Category</option>
             <option value="clothing">Clothing</option>
             <option value="food">Food</option>
             <option value="travel">Travel</option>
