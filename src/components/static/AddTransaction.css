@@ -34,3 +34,8 @@
 .add-transaction form button:hover {
   background-color: #357ab9;
 }
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}

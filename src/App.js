@@ -14,18 +14,20 @@ function App() {
   const [profile, setProfile] = useState({ name: "", balance: 0, budget: 0 });
   const [transactions, setTransactions] = useState([]);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
-  const [mode, setMode] = useState(""); // "view" or "edit"
+  const [mode, setMode] = useState("");
 
   const addTransaction = (transaction) => {
+    const transactionAmount = parseFloat(transaction.amount); // Ensure amount is treated as a number
     setTransactions([...transactions, { ...transaction, id: Date.now() }]);
     if (transaction.type === "income") {
-      setProfile({ ...profile, balance: profile.balance + transaction.amount });
+      setProfile({ ...profile, balance: profile.balance + transactionAmount });
     } else {
-      setProfile({ ...profile, balance: profile.balance - transaction.amount });
+      setProfile({ ...profile, balance: profile.balance - transactionAmount });
     }
   };
 
   const updateTransaction = (updatedTransaction) => {
+    const transactionAmount = parseFloat(updatedTransaction.amount); // Ensure amount is treated as a number
     const updatedTransactions = transactions.map((transaction) =>
       transaction.id === updatedTransaction.id
         ? updatedTransaction
@@ -38,14 +40,19 @@ function App() {
     );
 
     if (previousTransaction) {
+      const previousAmount = parseFloat(previousTransaction.amount);
       const balanceAdjustment =
         previousTransaction.type === "income"
-          ? -previousTransaction.amount
-          : previousTransaction.amount;
+          ? -previousAmount
+          : previousAmount;
       setProfile({
         ...profile,
         balance:
-          profile.balance + balanceAdjustment + updatedTransaction.amount,
+          profile.balance +
+          balanceAdjustment +
+          (updatedTransaction.type === "income"
+            ? transactionAmount
+            : -transactionAmount),
       });
     }
   };
@@ -54,15 +61,16 @@ function App() {
     const transactionToDelete = transactions.find(
       (transaction) => transaction.id === id
     );
+    const transactionAmount = parseFloat(transactionToDelete.amount); // Ensure amount is treated as a number
     if (transactionToDelete.type === "income") {
       setProfile({
         ...profile,
-        balance: profile.balance - transactionToDelete.amount,
+        balance: profile.balance - transactionAmount,
       });
     } else {
       setProfile({
         ...profile,
-        balance: profile.balance + transactionToDelete.amount,
+        balance: profile.balance + transactionAmount,
       });
     }
     setTransactions(
@@ -91,7 +99,7 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      <TopBar />
+      <TopBar profile={profile} />
       <div className="main-content">
         <div id="profile">
           <UserProfile profile={profile} setProfile={setProfile} />

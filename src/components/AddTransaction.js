@@ -21,7 +21,6 @@ const AddTransaction = ({ addTransaction }) => {
     };
     addTransaction(newTransaction);
 
-    // Clear the input fields
     setType("expense");
     setCategory("");
     setAmount("");
@@ -36,7 +35,11 @@ const AddTransaction = ({ addTransaction }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Type</label>
-          <select value={type} onChange={(e) => setType(e.target.value)}>
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            required
+          >
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
@@ -46,6 +49,7 @@ const AddTransaction = ({ addTransaction }) => {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            required
           >
             <option value="clothing">Clothing</option>
             <option value="food">Food</option>
@@ -60,6 +64,7 @@ const AddTransaction = ({ addTransaction }) => {
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -68,6 +73,7 @@ const AddTransaction = ({ addTransaction }) => {
             type="datetime-local"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -76,6 +82,7 @@ const AddTransaction = ({ addTransaction }) => {
             type="text"
             value={note}
             onChange={(e) => setNote(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -84,6 +91,7 @@ const AddTransaction = ({ addTransaction }) => {
             type="text"
             value={payee}
             onChange={(e) => setPayee(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Add Transaction</button>

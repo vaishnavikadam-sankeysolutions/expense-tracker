@@ -7,12 +7,13 @@ const Home = ({ balance = 0, budget = 0, expenses = [] }) => {
     0
   );
   const warning = totalExpenses > budget;
+  console.log(expenses.category);
 
   return (
     <div className="home">
       <div className={`balance-card ${warning ? "warning" : ""}`}>
         <h3>Current Balance</h3>
-        <p>${balance}</p>
+        <p>{balance}</p>
       </div>
       {warning && (
         <p className="warning-text">
